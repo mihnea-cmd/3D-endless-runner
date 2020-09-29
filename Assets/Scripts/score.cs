@@ -14,6 +14,10 @@ public class score : playerMovement
     public float scoreMultiplierFactor = 0.1f;
     public float difficultyMultiplier = 1.0f;
     public float speedAmount = 1.0f;
+    private bool isAlive = true;
+
+    public deathMenu deathMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +29,8 @@ public class score : playerMovement
     // Update is called once per frame
     void Update()
     {
+        if (!isAlive)
+            return;
        // scoreAmount = scoreAmount + scoreMultiplier * characterSpeed;
        scoreAmount += Time.deltaTime * difficultyMultiplier;
 
@@ -45,5 +51,12 @@ public class score : playerMovement
 
         }*/
         scoreText.text = ((int)scoreAmount).ToString(); 
+    }
+
+    public void death()
+    {
+        //stop adding points to the score
+        isAlive = false;
+        deathMenu.toggleDeathMenu(scoreAmount);
     }
 }

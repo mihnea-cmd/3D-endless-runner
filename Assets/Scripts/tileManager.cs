@@ -21,6 +21,7 @@ public class tileManager : MonoBehaviour
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
         for (int i = 0; i < tilesNumber; i++)
             spawnTile();
         

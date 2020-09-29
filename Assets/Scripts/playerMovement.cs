@@ -13,6 +13,8 @@ public class playerMovement : MonoBehaviour
     private float gravity = 9.8f;
     private float verticalVelocity = 0.0f;
 
+    //private bool isAlive = true;
+
     private Vector3 moveVector;
 
     // Start is called before the first frame update
@@ -34,7 +36,19 @@ public class playerMovement : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.point.z > transform.position.z + controller.radius)
+        {
             Debug.Log("collision!");
+            //isAlive = false;
+            GetComponent<score>().death();
+        }
+
+
+    }
+
+    public bool getLifeData()
+    {
+        //return isAlive;
+        return true;
     }
 
     // Update is called once per frame
