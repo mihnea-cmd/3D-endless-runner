@@ -12,6 +12,8 @@ public class score : playerMovement
     public float playerSpeed = 1.0f;
     public float speedIncrease = 10;
     public float scoreMultiplierFactor = 0.1f;
+    public float difficultyMultiplier = 1.0f;
+    public float speedAmount = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +25,16 @@ public class score : playerMovement
     // Update is called once per frame
     void Update()
     {
-        scoreAmount = scoreAmount + scoreMultiplier * characterSpeed;
-        if(scoreAmount >= speedIncrease)
+       // scoreAmount = scoreAmount + scoreMultiplier * characterSpeed;
+       scoreAmount += Time.deltaTime * difficultyMultiplier;
+
+        if(scoreAmount >= speedIncrease) // speed increases everytime the score doubes
+        {
+            difficultyMultiplier += 0.2f;
+            speedIncrease = speedIncrease * 2;
+            addToSpeedZ(getSpeedZ() + speedAmount);
+        }
+      /*  if(scoreAmount >= speedIncrease)
         {
             speedIncrease = scoreAmount * 10.0f;
             scoreMultiplier = scoreMultiplier * scoreMultiplierFactor;
@@ -33,7 +43,7 @@ public class score : playerMovement
             addToSpeedZ(getSpeedZ() + 0.001f);
             Debug.Log("SPEED: " + characterSpeedForward);
 
-        }
+        }*/
         scoreText.text = ((int)scoreAmount).ToString(); 
     }
 }

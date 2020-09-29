@@ -6,7 +6,7 @@ public class playerMovement : MonoBehaviour
 
     
 {
-    private CharacterController controller;
+    public CharacterController controller;
     public float characterSpeed = 6.0f;
     public static float characterSpeedForward = 2.0f;
 
@@ -29,6 +29,12 @@ public class playerMovement : MonoBehaviour
     public void addToSpeedZ(float amount)
     {
         characterSpeedForward = characterSpeedForward + amount;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.point.z > transform.position.z + controller.radius)
+            Debug.Log("collision!");
     }
 
     // Update is called once per frame
