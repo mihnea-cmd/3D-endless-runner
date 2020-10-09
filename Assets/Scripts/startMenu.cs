@@ -21,4 +21,24 @@ public class startMenu : MonoBehaviour
     {
         SceneManager.LoadScene("scene");
     }
+
+    public void exitGame()
+    {
+        Application.Quit();
+    }
+
+    public void optionsMenu()
+    {
+        SceneManager.LoadScene("options");
+    }
+
+    public void loadInstructions()
+    {
+        SceneManager.LoadScene("instructions");
+    }
+
+    public void loadAbout()
+    {
+        SceneManager.LoadScene("about");
+    }
 }

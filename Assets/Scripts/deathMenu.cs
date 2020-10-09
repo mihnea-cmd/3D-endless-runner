@@ -9,6 +9,8 @@ public class deathMenu : MonoBehaviour
 {
 
     public Text scoreText;
+    public Text bonesText2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +23,11 @@ public class deathMenu : MonoBehaviour
         
     }
 
-    public void toggleDeathMenu(float score)
+    public void toggleDeathMenu(float score, float bones)
     {
         gameObject.SetActive(true);
-        scoreText.text = ((int)score).ToString();
+        scoreText.text = "Score: " + ((int)score).ToString();
+        bonesText2.text = "Bones: " + ((int)bones).ToString();
     }
 
     public void restart()
